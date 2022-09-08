@@ -72,6 +72,7 @@ export default class Capitals extends Component {
             <select className="capital-selection-dropdown" name="capital-name">
               {countryAndCapitalsList.map(capitalCountryDataItem => (
                 <CapitalItem
+                  key={capitalCountryDataItem.id}
                   itemData={capitalCountryDataItem}
                   isSelected={capitalCountryDataItem.id === selectedCapitalId}
                 />
