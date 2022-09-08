@@ -38,43 +38,51 @@ const getCapitalsCountryName = capitalNameId => {
 }
 
 const CapitalItem = props => {
-  const {itemData, isSelected} = props
-  const {id, capitalDisplayText} = itemData
+  const {itemData} = props
+  const {capitalDisplayText} = itemData
 
-  const optionElementString = `<option className="capital-selection-dropdown-option" value=${id} ${
-    isSelected ? 'selected' : ''
-  }>${capitalDisplayText}</option>`
-  return {optionElementString}
+  return (
+    <option
+      className="capital-selection-dropdown-option"
+      value={capitalDisplayText}
+    >
+      {capitalDisplayText}
+    </option>
+  )
 }
 
 export default class Capitals extends Component {
   state = {
-    selectedCapitalId: countryAndCapitalsList[0].id,
+    selectedCapital: countryAndCapitalsList[0].capitalDisplayText,
   }
 
   onCapitalNameSelection = capitalNameSelectionEvent => {
-    const idOfCapitalNameSelectedByUser = capitalNameSelectionEvent.target.value
+    const capitalNameSelectedByUser = capitalNameSelectionEvent.target.value
 
     this.setState({
-      selectedCapitalId: idOfCapitalNameSelectedByUser,
+      selectedCapital: capitalNameSelectedByUser,
     })
   }
 
   render() {
-    const {selectedCapitalId} = this.state
-    const capitalsCountryName = getCapitalsCountryName(selectedCapitalId)
+    const {selectedCapital} = this.state
+    const capitalsCountryName = getCapitalsCountryName(selectedCapital)
 
     return (
       <div className="capitals-app-bg-container">
         <div className="content-container">
           <h1 className="content-header">Countries And Capitals</h1>
           <div className="capital-selection-container">
-            <select className="capital-selection-dropdown" name="capital-name">
+            <select
+              className="capital-selection-dropdown"
+              name="capital-name"
+              value={selectedCapital}
+              onChange={this.onCapitalNameSelection}
+            >
               {countryAndCapitalsList.map(capitalCountryDataItem => (
                 <CapitalItem
                   key={capitalCountryDataItem.id}
                   itemData={capitalCountryDataItem}
-                  isSelected={capitalCountryDataItem.id === selectedCapitalId}
                 />
               ))}
             </select>

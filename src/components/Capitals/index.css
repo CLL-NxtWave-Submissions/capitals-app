@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 0.8rem;
@@ -33,6 +33,9 @@
   border: 0.1rem solid #cbd2d9;
   border-radius: 0.4rem;
   margin-right: 0.5rem;
+  padding: 0.5rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .capital-selection-dropdown-option,
@@ -46,7 +49,13 @@
 }
 
 .capital-selection-question {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.capital-selection-dropdown,
+.capital-selection-dropdown-option,
+.capital-selection-question {
+  font-weight: 600;
 }
 
 .capital-selection-dropdown,
@@ -55,5 +64,5 @@
 }
 
 .country-text {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
