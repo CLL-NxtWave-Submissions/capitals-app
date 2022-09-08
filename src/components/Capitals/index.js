@@ -29,10 +29,9 @@ const countryAndCapitalsList = [
   },
 ]
 
-const getCapitalsCountryName = capitalName => {
+const getCapitalsCountryName = capitalNameId => {
   const selectedItemCapitalCountryData = countryAndCapitalsList.find(
-    countryAndCapitalListItem =>
-      countryAndCapitalListItem.capitalDisplayText === capitalName,
+    countryAndCapitalListItem => countryAndCapitalListItem.id === capitalNameId,
   )
 
   return selectedItemCapitalCountryData.country
@@ -40,13 +39,10 @@ const getCapitalsCountryName = capitalName => {
 
 const CapitalItem = props => {
   const {itemData} = props
-  const {capitalDisplayText} = itemData
+  const {id, capitalDisplayText} = itemData
 
   return (
-    <option
-      className="capital-selection-dropdown-option"
-      value={capitalDisplayText}
-    >
+    <option className="capital-selection-dropdown-option" value={id}>
       {capitalDisplayText}
     </option>
   )
@@ -54,20 +50,20 @@ const CapitalItem = props => {
 
 export default class Capitals extends Component {
   state = {
-    selectedCapital: countryAndCapitalsList[0].capitalDisplayText,
+    selectedCapitalId: countryAndCapitalsList[0].id,
   }
 
   onCapitalNameSelection = capitalNameSelectionEvent => {
-    const capitalNameSelectedByUser = capitalNameSelectionEvent.target.value
+    const idOfcapitalNameSelectedByUser = capitalNameSelectionEvent.target.value
 
     this.setState({
-      selectedCapital: capitalNameSelectedByUser,
+      selectedCapitalId: idOfcapitalNameSelectedByUser,
     })
   }
 
   render() {
-    const {selectedCapital} = this.state
-    const capitalsCountryName = getCapitalsCountryName(selectedCapital)
+    const {selectedCapitalId} = this.state
+    const capitalsCountryName = getCapitalsCountryName(selectedCapitalId)
 
     return (
       <div className="capitals-app-bg-container">
@@ -77,7 +73,7 @@ export default class Capitals extends Component {
             <select
               className="capital-selection-dropdown"
               name="capital-name"
-              value={selectedCapital}
+              value={selectedCapitalId}
               onChange={this.onCapitalNameSelection}
             >
               {countryAndCapitalsList.map(capitalCountryDataItem => (
