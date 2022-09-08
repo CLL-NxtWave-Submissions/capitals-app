@@ -29,9 +29,10 @@ const countryAndCapitalsList = [
   },
 ]
 
-const getCapitalsCountryName = capitalNameId => {
+const getCapitalsCountryName = capitalName => {
   const selectedItemCapitalCountryData = countryAndCapitalsList.find(
-    countryAndCapitalListItem => countryAndCapitalListItem.id === capitalNameId,
+    countryAndCapitalListItem =>
+      countryAndCapitalListItem.capitalDisplayText === capitalName,
   )
 
   return selectedItemCapitalCountryData.country
