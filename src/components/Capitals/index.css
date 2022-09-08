@@ -27,6 +27,7 @@
   display: flex;
   align-items: center;
   padding: 0;
+  width: 100%;
 }
 
 .capital-selection-dropdown {
@@ -36,6 +37,7 @@
   padding: 0.5rem;
   outline: none;
   cursor: pointer;
+  flex-grow: 1;
 }
 
 .capital-selection-dropdown-option,
@@ -54,13 +56,14 @@
 
 .capital-selection-dropdown,
 .capital-selection-dropdown-option,
-.capital-selection-question {
-  font-weight: 600;
+.capital-selection-question,
+.country-text {
+  font-weight: 550;
 }
 
 .capital-selection-dropdown,
 .country-text {
-  color: #1e293b;
+  color: #1e293b !important;
 }
 
 .country-text {
